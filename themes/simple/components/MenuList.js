@@ -29,29 +29,15 @@ export const MenuList = ({ customNav, customMenu }) => {
   })
 
   let links = [
+    { icon: 'fas fa-house', name: '首頁', href: '/', show: true },
+    { icon: 'fas fa-note-sticky', name: '文章', href: '/archive', show: true },
+    { icon: 'fas fa-code', name: '專案', href: '/projects', show: true },
+    { icon: 'fas fa-user', name: '關於', href: '/about', show: true },
     {
       icon: 'fas fa-search',
       name: locale.NAV.SEARCH,
       href: '/search',
       show: siteConfig('SIMPLE_MENU_SEARCH', null, CONFIG)
-    },
-    {
-      icon: 'fas fa-archive',
-      name: locale.NAV.ARCHIVE,
-      href: '/archive',
-      show: siteConfig('SIMPLE_MENU_ARCHIVE', null, CONFIG)
-    },
-    {
-      icon: 'fas fa-folder',
-      name: locale.COMMON.CATEGORY,
-      href: '/category',
-      show: siteConfig('SIMPLE_MENU_CATEGORY', null, CONFIG)
-    },
-    {
-      icon: 'fas fa-tag',
-      name: locale.COMMON.TAGS,
-      href: '/tag',
-      show: siteConfig('SIMPLE_MENU_TAG', null, CONFIG)
     }
   ]
 

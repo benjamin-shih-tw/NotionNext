@@ -1,0 +1,3 @@
+export default function AboutPage() {
+  return <main className='w-full md:pr-8 pb-20'><section className='notebook-card p-8 md:p-12'><div className='notebook-kicker mb-4'>About</div><h1 className='text-4xl font-serif font-bold mb-6'>嗨，我是 Benjamin Shih。</h1><p className='text-lg text-gray-700 leading-8 mb-8'>這裡是我的個人筆記本，記錄程式開發、競程、專題研究，以及一路上值得留下的想法。</p><div className='border-t border-yellow-200 pt-6 flex flex-wrap gap-4'><a className='notebook-button' href='https://github.com/benjamin-shih-tw' target='_blank' rel='noreferrer'>GitHub</a><a className='notebook-button' href='mailto:benjaminshih1229@gmail.com'>Email</a></div></section></main>
+}

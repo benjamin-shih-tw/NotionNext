@@ -13,8 +13,8 @@ export default function Header(props) {
   const ANALYTICS_BUSUANZI_ENABLE = siteConfig('ANALYTICS_BUSUANZI_ENABLE')
 
   return (
-    <header className='text-center justify-between items-center px-6 bg-white h-80 dark:bg-black relative z-10'>
-      <div className='float-none inline-block py-12'>
+    <header className='notebook-header text-center justify-between items-center px-6 relative z-10'>
+      <div className='float-none inline-block py-10'>
         <SmartLink href='/'>
           {/* 可使用一张单图作为logo */}
           <div className='flex space-x-6 justify-center'>
@@ -30,8 +30,8 @@ export default function Header(props) {
             </div>
 
             <div className='flex-col flex justify-center'>
-              <div className='text-2xl font-serif dark:text-white py-2 hover:scale-105 transform duration-200'>
-                {siteConfig('AUTHOR')}
+              <div className='text-3xl font-serif dark:text-white py-2 hover:scale-105 transform duration-200'>
+                Blog of Benjaminshih
               </div>
               <div
                 className='font-light dark:text-white py-2 hover:scale-105 transform duration-200 text-center'

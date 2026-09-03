@@ -54,6 +54,9 @@ const BlogListPage = dynamic(() => import('./components/BlogListPage'), {
 const RecommendPosts = dynamic(() => import('./components/RecommendPosts'), {
   ssr: false
 })
+const NotebookHome = dynamic(() => import('./components/NotebookHome'))
+const ProjectsPage = dynamic(() => import('./components/ProjectsPage'))
+const AboutPage = dynamic(() => import('./components/AboutPage'))
 
 // 主题全局状态
 const ThemeGlobalSimple = createContext()
@@ -140,8 +143,11 @@ const LayoutBase = props => {
  * @returns
  */
 const LayoutIndex = props => {
-  return <LayoutPostList {...props} />
+  return <NotebookHome {...props} />
 }
+
+const LayoutProjects = props => <ProjectsPage {...props} />
+const LayoutAbout = props => <AboutPage {...props} />
 /**
  * 博客列表
  * @param {*} props
@@ -358,6 +364,8 @@ export {
   LayoutBase,
   LayoutCategoryIndex,
   LayoutIndex,
+  LayoutProjects,
+  LayoutAbout,
   LayoutPostList,
   LayoutSearch,
   LayoutSlug,
