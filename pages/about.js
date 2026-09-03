@@ -10,5 +10,6 @@ export default function About(props) {
 
 export async function getStaticProps({ locale }) {
   const props = await fetchGlobalAllData({ from: 'about', locale })
+  props.meta = { title: '關於 | Blog of Benjaminshih', description: '關於 Benjamin Shih 與這本個人筆記。' }
   return { props, revalidate: 3600 }
 }

@@ -35,6 +35,10 @@ export async function getStaticProps(req) {
   const from = 'index'
   const props = await fetchGlobalAllData({ from, locale })
   props.githubRepos = await getBenjaminRepos()
+  props.meta = {
+    title: 'Blog of Benjaminshih',
+    description: 'Benjamin Shih 的個人筆記本：程式、競程、專題研究與生活紀錄。'
+  }
   if (process.env.NODE_ENV === 'development') {
     const configTheme = BLOG.THEME
     const notionTheme = props?.NOTION_CONFIG?.THEME || null

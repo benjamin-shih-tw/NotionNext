@@ -12,5 +12,6 @@ export default function Projects(props) {
 export async function getStaticProps({ locale }) {
   const props = await fetchGlobalAllData({ from: 'projects', locale })
   props.githubRepos = await getBenjaminRepos()
+  props.meta = { title: '專案 | Blog of Benjaminshih', description: 'Benjamin Shih 的所有公開 GitHub 專案。' }
   return { props, revalidate: 3600 }
 }
