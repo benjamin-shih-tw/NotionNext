@@ -43,6 +43,8 @@ const MyApp = ({ Component, pageProps }) => {
   useAdjustStyle()
 
   const route = useRouter()
+  const isStandaloneCp =
+    route.pathname === '/cp' || route.pathname.startsWith('/cp/')
   const queryTheme = getQueryParam(route.asPath, 'theme')
   const notionTheme = pageProps?.NOTION_CONFIG?.THEME
   const configTheme = BLOG.THEME
@@ -83,7 +85,7 @@ const MyApp = ({ Component, pageProps }) => {
   )
 
   const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-  const content = (
+  const notionContent = (
     <AppErrorBoundary>
       <GlobalContextProvider {...pageProps}>
         <GLayout {...pageProps}>
@@ -95,6 +97,12 @@ const MyApp = ({ Component, pageProps }) => {
       </GlobalContextProvider>
     </AppErrorBoundary>
   )
+  const content = isStandaloneCp ? (
+    <AppErrorBoundary>
+      <Component {...pageProps} />
+    </AppErrorBoundary>
+  ) : notionContent
+
   return (
     <>
       {enableClerk ? (
