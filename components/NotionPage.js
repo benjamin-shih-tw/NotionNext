@@ -16,7 +16,7 @@ import OriginalityProof from './OriginalityProof'
  * @param {*} param0
  * @returns
  */
-const NotionPage = ({ post, className }) => {
+const NotionPage = ({ post, className, darkMode }) => {
   // 是否关闭数据库和画册的点击跳转
   const POST_DISABLE_GALLERY_CLICK = siteConfig('POST_DISABLE_GALLERY_CLICK')
   const POST_DISABLE_DATABASE_CLICK = siteConfig('POST_DISABLE_DATABASE_CLICK')
@@ -117,6 +117,7 @@ const NotionPage = ({ post, className }) => {
       className={`mx-auto overflow-hidden ${className || ''}`}>
       <NotionRenderer
         recordMap={post?.blockMap}
+        darkMode={darkMode}
         mapPageUrl={mapPageUrl}
         mapImageUrl={mapImgUrl}
         components={{
