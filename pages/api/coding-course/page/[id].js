@@ -1,7 +1,12 @@
 import { fetchPageFromNotion } from '@/lib/db/notion/getNotionPost'
 import { catalogContainsPage, getCodingCourseCatalog } from '@/lib/codingCourse/catalog'
+import { findRecordBlock, isCodingCoursePage } from '@/lib/codingCourse/hierarchy'
 
 const compact = value => String(value || '').replace(/-/g, '').toLowerCase()
+const blockTitle = block => (block?.properties?.title || [])
+  .map(part => Array.isArray(part) ? part[0] : part)
+  .filter(part => typeof part === 'string')
+  .join('')
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -19,20 +24,25 @@ export default async function handler(req, res) {
 
   try {
     const catalog = await getCodingCourseCatalog()
-    if (!catalogContainsPage(catalog, id)) {
-      return res.status(404).json({ error: 'Course page not found' })
-    }
-
     const minute = Math.floor(Date.now() / 60000)
     const post = await fetchPageFromNotion(id, { cacheVersion: 'cc-page-' + minute })
     if (!post?.blockMap) {
       return res.status(404).json({ error: 'Course content not found' })
     }
 
+    if (
+      !catalogContainsPage(catalog, id) &&
+      !isCodingCoursePage(post.blockMap, id, catalog)
+    ) {
+      return res.status(404).json({ error: 'Course page not found' })
+    }
+
     const item = catalog.items.find(item => item.id === id)
+    const pageBlock = findRecordBlock(post.blockMap, id)
+    const notionTitle = blockTitle(pageBlock)
     return res.status(200).json({
       id,
-      title: item?.title || post.title || '',
+      title: item?.title || notionTitle || post.title || '',
       hasContent: item?.hasContent !== false,
       blockMap: post.blockMap
     })
