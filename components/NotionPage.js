@@ -95,7 +95,7 @@ const NotionPage = ({ post, className, darkMode }) => {
   }, [post])
 
   useEffect(() => {
-    const root = document.querySelector('#notion-article .notion-page-content-inner')
+    const root = document.querySelector('#notion-article main.notion-page')
     if (!root) return
 
     const render = () => {
