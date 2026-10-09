@@ -1,8 +1,9 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextFetchEvent, NextRequest, NextResponse } from 'next/server'
 import { checkStrIsNotionId, getLastPartOfUrl } from '@/lib/utils'
 import { idToUuid } from 'notion-utils'
 import BLOG from './blog.config'
+import { ADMIN_REALM, isAdminAuthorized } from './lib/admin/auth'
 
 /**
  * Clerk 身份验证中间件
@@ -91,4 +92,21 @@ const authMiddleware = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
     })
   : noAuthMiddleware
 
-export default authMiddleware
+export default async function middleware(req: NextRequest, ev: NextFetchEvent) {
+  const path = req.nextUrl.pathname
+  if (path === '/admin' || path.startsWith('/admin/') ||
+      path === '/api/admin' || path.startsWith('/api/admin/')) {
+    if (!await isAdminAuthorized(req.headers.get('authorization'))) {
+      return new NextResponse('Authentication required', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': ADMIN_REALM,
+          'Cache-Control': 'private, no-store',
+          'X-Robots-Tag': 'noindex, nofollow',
+          'X-Frame-Options': 'DENY'
+        }
+      })
+    }
+  }
+  return authMiddleware(req, ev)
+}

@@ -45,6 +45,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   const route = useRouter()
   const isStandaloneCp =
+    route.pathname === '/admin' ||
     route.pathname === '/cp' || route.pathname.startsWith('/cp/')
   const queryTheme = getQueryParam(route.asPath, 'theme')
   const notionTheme = pageProps?.NOTION_CONFIG?.THEME

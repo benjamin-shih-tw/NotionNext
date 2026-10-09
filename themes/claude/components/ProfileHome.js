@@ -156,6 +156,7 @@ const sanitizeReadmeHtml = html => {
 
 export default function ProfileHome(props) {
   const { posts = [], readmePage, contributionEvents: persistedContributionEvents = [] } = props
+  const homepage = props.homepage
   const heatmapGridRef = useRef(null)
   const tooltipTimerRef = useRef(null)
   const [contribCellSize, setContribCellSize] = useState(11)
@@ -611,10 +612,13 @@ export default function ProfileHome(props) {
       <div className='claude-profile-home-main'>
         <div className='claude-readme-card'>
           <div className='claude-readme-card-meta'>
-            README
-            <span className='claude-readme-card-meta-ext'>.md</span>
+            {homepage?.readmeTitle || 'README.md'}
           </div>
-          {readmeHtml ? (
+          {homepage?.useCustomReadme ? (
+            <div className='markdown-body' style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>
+              {homepage.readmeText}
+            </div>
+          ) : readmeHtml ? (
             <div
               className='markdown-body'
               dangerouslySetInnerHTML={{ __html: readmeHtml }}
