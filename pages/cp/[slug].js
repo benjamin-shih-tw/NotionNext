@@ -487,7 +487,7 @@ export default function CpContest({ contest }) {
   )
 }
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   return {
     paths: CP_CONTESTS.map(contest => ({
       params: { slug: contest.slug }
