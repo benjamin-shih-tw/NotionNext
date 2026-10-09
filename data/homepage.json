@@ -1,7 +1,18 @@
 {
   "pageTitle": "Blog of Benjaminshih",
   "pageDescription": "Benjamin Shih 的個人筆記本：程式、競程、專題研究與生活紀錄。",
-  "readmeTitle": "README.md",
-  "useCustomReadme": false,
-  "readmeText": ""
+  "heroLabel": "Personal notebook · 2026",
+  "heroTitle": "寫下值得留下的筆記，\n安排真正會發生的一週。",
+  "heroDescription": "這本筆記收藏我的專案與學習紀錄。寫給一個用鉛筆與墨水思考的開發者。",
+  "notesButton": "翻閱文章",
+  "projectsButton": "查看專案",
+  "welcomeLabel": "Hey there!",
+  "welcomeTitle": "嗨，歡迎來到我的筆記本。",
+  "welcomeDescription": "泡杯咖啡，忽略散落的塗鴉，看看我正在做的專案、競程筆記與研究紀錄。",
+  "activityLabel": "Coding activity",
+  "activityTitle": "程式活動",
+  "notesLabel": "Selected notes",
+  "notesTitle": "精選文章",
+  "projectsLabel": "Selected projects",
+  "projectsTitle": "精選專案"
 }

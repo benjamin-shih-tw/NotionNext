@@ -57,29 +57,36 @@ export default function Admin({ authorized }) {
   if (!authorized) return null
 
   const fields = [
-    ['pageTitle', '首頁標題', 200, 1],
-    ['pageDescription', '首頁介紹（搜尋引擎摘要）', 1000, 3],
-    ['readmeTitle', 'README 卡片標題', 200, 1],
-    ['readmeText', 'README 內容（純文字，支援換行）', 20000, 14]
+    ['heroLabel', '首頁小標', 200, 1],
+    ['heroTitle', '首頁大標題（可換行）', 500, 3],
+    ['heroDescription', '首頁介紹', 3000, 4],
+    ['notesButton', '文章按鈕文字', 100, 1],
+    ['projectsButton', '專案按鈕文字', 100, 1],
+    ['welcomeLabel', '歡迎區小標', 200, 1],
+    ['welcomeTitle', '歡迎標題', 500, 2],
+    ['welcomeDescription', '歡迎介紹', 3000, 4],
+    ['activityLabel', '程式活動小標', 200, 1],
+    ['activityTitle', '程式活動標題', 200, 1],
+    ['notesLabel', '精選文章小標', 200, 1],
+    ['notesTitle', '精選文章標題', 200, 1],
+    ['projectsLabel', '精選專案小標', 200, 1],
+    ['projectsTitle', '精選專案標題', 200, 1],
+    ['pageTitle', '瀏覽器／搜尋引擎標題', 200, 1],
+    ['pageDescription', '搜尋引擎摘要', 1000, 3]
   ]
 
   return (
     <main className='homepage-admin'>
       <Head><title>首頁編輯後台</title><meta name='robots' content='noindex,nofollow' /></Head>
       <h1>首頁編輯後台</h1>
-      <p>編輯目前網站的首頁內容。</p>
+      <p>編輯目前筆記本首頁的文字。文章與專案列表仍會從 Notion 和 GitHub 更新。</p>
       {data && (
-        <form onSubmit={publish}>
-          <label className='toggle'>
-            <input type='checkbox' checked={data.useCustomReadme} disabled={saving}
-              onChange={event => setData(previous => ({ ...previous, useCustomReadme: event.target.checked }))} />
-            使用下方文字取代首頁 README；取消勾選可沿用 Notion 內容。
-          </label>
+        <form onSubmit={event => { void publish(event) }}>
           {fields.map(([key, label, maximum, rows]) => (
             <label key={key} className='field'>
               <span>{label}</span>
               <textarea value={data[key]} rows={rows} maxLength={maximum} disabled={saving}
-                required={key === 'pageTitle' || key === 'readmeTitle' || (key === 'readmeText' && data.useCustomReadme)}
+                required={['pageTitle', 'heroTitle', 'welcomeTitle', 'notesButton', 'projectsButton'].includes(key)}
                 onChange={event => setData(previous => ({ ...previous, [key]: event.target.value }))} />
             </label>
           ))}

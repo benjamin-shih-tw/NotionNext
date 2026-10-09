@@ -6,8 +6,22 @@ import handler from '@/pages/api/admin/home'
 import { getServerSideProps } from '@/pages/admin'
 
 const content = {
-  pageTitle: 'Current website', pageDescription: 'Introduction',
-  readmeTitle: 'README.md', useCustomReadme: true, readmeText: 'Hello\n<script>plain text</script>'
+  "pageTitle": "Blog of Benjaminshih",
+  "pageDescription": "Benjamin Shih 的個人筆記本：程式、競程、專題研究與生活紀錄。",
+  "heroLabel": "Personal notebook · 2026",
+  "heroTitle": "寫下值得留下的筆記，\n安排真正會發生的一週。",
+  "heroDescription": "這本筆記收藏我的專案與學習紀錄。寫給一個用鉛筆與墨水思考的開發者。",
+  "notesButton": "翻閱文章",
+  "projectsButton": "查看專案",
+  "welcomeLabel": "Hey there!",
+  "welcomeTitle": "嗨，歡迎來到我的筆記本。",
+  "welcomeDescription": "泡杯咖啡，忽略散落的塗鴉，看看我正在做的專案、競程筆記與研究紀錄。",
+  "activityLabel": "Coding activity",
+  "activityTitle": "程式活動",
+  "notesLabel": "Selected notes",
+  "notesTitle": "精選文章",
+  "projectsLabel": "Selected projects",
+  "projectsTitle": "精選專案"
 }
 const sha = 'a'.repeat(40)
 let authorization
@@ -107,14 +121,14 @@ test('publishes only validated homepage fields to the fixed repository and branc
     json: async () => ({ content: { sha: 'c'.repeat(40) }, commit: { html_url: 'https://github.com/benjamin-shih-tw/NotionNext/commit/test' } })
   })
   const res = response()
-  await handler(request({ body: { ...content, readmeText: 'Updated introduction', sha, path: 'arbitrary.js', token: 'injected' } }), res)
+  await handler(request({ body: { ...content, heroDescription: 'Updated introduction', sha, path: 'arbitrary.js', token: 'injected' } }), res)
   expect(res.statusCode).toBe(200)
   const [url, options] = fetch.mock.calls[1]
   expect(url).toContain('/NotionNext/contents/data/homepage.json')
   const payload = JSON.parse(options.body)
   expect(payload.branch).toBe('main')
   expect(payload.sha).toBe(sha)
-  expect(JSON.parse(Buffer.from(payload.content, 'base64').toString('utf8'))).toEqual({ ...content, readmeText: 'Updated introduction' })
+  expect(JSON.parse(Buffer.from(payload.content, 'base64').toString('utf8'))).toEqual({ ...content, heroDescription: 'Updated introduction' })
   expect(JSON.stringify(res.body)).not.toContain(process.env.GITHUB_TOKEN)
 })
 
@@ -126,9 +140,9 @@ test('does not create an unnecessary deployment when nothing changed', async () 
   expect(fetch).toHaveBeenCalledTimes(1)
 })
 
-test('validates size, types and nonempty custom content', () => {
-  expect(validateHomepage({ ...content, readmeText: 'x'.repeat(20001) })).toBeNull()
-  expect(validateHomepage({ ...content, useCustomReadme: 'true' })).toBeNull()
-  expect(validateHomepage({ ...content, readmeText: ' ' })).toBeNull()
-  expect(validateHomepage({ ...content, useCustomReadme: false, readmeText: '' })).not.toBeNull()
+test('validates size, types and required text', () => {
+  expect(validateHomepage({ ...content, heroDescription: 'x'.repeat(3001) })).toBeNull()
+  expect(validateHomepage({ ...content, heroTitle: false })).toBeNull()
+  expect(validateHomepage({ ...content, heroTitle: ' ' })).toBeNull()
+  expect(validateHomepage({ ...content, heroDescription: '' })).not.toBeNull()
 })
