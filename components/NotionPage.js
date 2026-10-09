@@ -2,7 +2,8 @@ import { siteConfig } from '@/lib/config'
 import { compressImage, mapImgUrl } from '@/lib/db/notion/mapImage'
 import NotionEmbed from '@/components/NotionEmbed'
 import NotionLink from '@/components/NotionLink'
-import { isBrowser, loadExternalResource } from '@/lib/utils'
+import { isBrowser } from '@/lib/utils'
+import { renderSpoilers } from '@/lib/spoilerText'
 import mediumZoom from '@fisch0920/medium-zoom'
 import 'katex/dist/katex.min.css'
 import dynamic from 'next/dynamic'
@@ -94,19 +95,20 @@ const NotionPage = ({ post, className, darkMode }) => {
   }, [post])
 
   useEffect(() => {
-    // Spoiler文本功能
-    if (SPOILER_TEXT_TAG) {
-      import('lodash/escapeRegExp').then(escapeRegExp => {
-        Promise.all([
-          loadExternalResource('/js/spoilerText.js', 'js'),
-          loadExternalResource('/css/spoiler-text.css', 'css')
-        ]).then(() => {
-          window.textToSpoiler &&
-            window.textToSpoiler(escapeRegExp.default(SPOILER_TEXT_TAG))
-        })
-      })
+    const root = document.querySelector('#notion-article .notion-page-content-inner')
+    if (!root) return
+
+    const render = () => {
+      renderSpoilers(root, '||')
+      if (SPOILER_TEXT_TAG && SPOILER_TEXT_TAG !== '||') {
+        renderSpoilers(root, SPOILER_TEXT_TAG)
+      }
     }
-  }, [post])
+    render()
+    const observer = new MutationObserver(render)
+    observer.observe(root, { childList: true, subtree: true })
+    return () => observer.disconnect()
+  }, [post, SPOILER_TEXT_TAG])
 
   // const cleanBlockMap = cleanBlocksWithWarn(post?.blockMap);
   // console.log('NotionPage render with post:', post);

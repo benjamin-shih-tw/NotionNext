@@ -5,6 +5,7 @@ import '@/styles/utility-patterns.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css' // 原版的react-notion-x
 import '@/styles/notion.css' //  重写部分notion样式
+import '@/styles/spoiler-text.css'
 
 import useAdjustStyle from '@/hooks/useAdjustStyle'
 import { GlobalContextProvider } from '@/lib/global'

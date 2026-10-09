@@ -1,0 +1,29 @@
+.spoiler-text {
+  display: inline;
+  border-radius: 0.2em;
+  background: #9ca3af;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  cursor: pointer;
+}
+
+.spoiler-text[aria-expanded='false'],
+.spoiler-text[aria-expanded='false'] * {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-decoration-color: transparent !important;
+  text-shadow: none !important;
+}
+
+.spoiler-text[aria-expanded='false'] * {
+  pointer-events: none;
+}
+
+.spoiler-text[aria-expanded='true'] {
+  background: transparent;
+}
+
+.spoiler-text:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
