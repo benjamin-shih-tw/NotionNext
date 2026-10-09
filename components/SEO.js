@@ -371,8 +371,8 @@ const getSEOMeta = (props, router, locale) => {
   switch (router.route) {
     case '/':
       return {
-        title: `${siteInfo?.title} | ${siteInfo?.description}`,
-        description: `${siteInfo?.description}`,
+        title: props.homepage?.pageTitle ?? `${siteInfo?.title} | ${siteInfo?.description}`,
+        description: props.homepage?.pageDescription ?? `${siteInfo?.description}`,
         image: `${siteInfo?.pageCover}`,
         slug: '',
         type: 'website'

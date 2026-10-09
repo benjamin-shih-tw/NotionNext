@@ -20,7 +20,7 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       - name: Verify admin authorization and GitHub publishing
-        run: yarn test --runInBand __tests__/pages/api/admin/home.test.js
+        run: yarn test --runInBand __tests__/pages/api/admin/home.test.js __tests__/themes/claude/ProfileHome.admin.test.js
       - name: Build existing NotionNext website
         run: yarn build
         env:

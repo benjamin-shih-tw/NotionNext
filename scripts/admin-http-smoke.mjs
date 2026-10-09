@@ -18,7 +18,7 @@ async function check(password) {
       await delay(250)
     }
     assert.ok(ready, 'Server ready')
-    for (const path of ['/admin', '/api/admin', '/api/admin/home', '/api/admin/nested']) {
+    for (const path of ['/admin', '/admin/nested.json', '/api/admin', '/api/admin/home', '/api/admin/nested']) {
       for (const authorization of ['', 'Basic invalid', 'Basic ' + Buffer.from('admin:incorrect').toString('base64')]) {
         const response = await fetch(base + path, { headers: { authorization } })
         assert.equal(response.status, 401, path + ' requires authentication')

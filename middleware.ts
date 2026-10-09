@@ -10,7 +10,7 @@ import { ADMIN_REALM, isAdminAuthorized } from './lib/admin/auth'
  */
 export const config = {
   // 这里设置白名单，防止静态资源被拦截
-  matcher: ['/((?!.*\\..*|_next|/sign-in|/auth).*)', '/', '/(api|trpc)(.*)']
+  matcher: ['/admin/:path*', '/api/admin/:path*', '/((?!.*\\..*|_next|/sign-in|/auth).*)', '/', '/(api|trpc)(.*)']
 }
 
 // 限制登录访问的路由
