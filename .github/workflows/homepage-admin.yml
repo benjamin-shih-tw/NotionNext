@@ -21,6 +21,8 @@ jobs:
       - run: yarn install --frozen-lockfile
       - name: Verify admin authorization and GitHub publishing
         run: yarn test --runInBand __tests__/pages/api/admin/home.test.js __tests__/themes/simple/NotebookHome.admin.test.js
+      - name: Lint homepage editor changes
+        run: yarn next lint --file pages/admin.js --file pages/api/admin/home.js --file middleware.ts --file lib/admin/auth.js --file lib/admin/homepage.js --file pages/index.js --file components/SEO.js --file themes/simple/components/NotebookHome.js
       - name: Build existing NotionNext website
         run: yarn build
         env:
