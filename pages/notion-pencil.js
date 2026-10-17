@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from '@/styles/notion-pencil.module.css'
 
@@ -72,6 +73,7 @@ function hitsStroke(stroke, point) {
 }
 
 export default function NotionPencil() {
+  const { isReady, replace } = useRouter()
   const [id, setId] = useState('')
   const [drawing, setDrawing] = useState(emptyDrawing)
   const [activeStroke, setActiveStroke] = useState(null)
@@ -94,6 +96,7 @@ export default function NotionPencil() {
   const versionRef = useRef(null)
   const busyRef = useRef(false)
   const pendingRef = useRef(null)
+  const initializedRef = useRef(false)
 
   const updateDrawing = useCallback(next => {
     drawingRef.current = next
@@ -169,12 +172,16 @@ export default function NotionPencil() {
   )
 
   useEffect(() => {
+    if (!isReady || initializedRef.current) return
+    initializedRef.current = true
     const url = new URL(window.location.href)
     let canvasId = url.searchParams.get('id')
     if (!canvasId) {
       canvasId = crypto.randomUUID()
       url.searchParams.set('id', canvasId)
-      window.history.replaceState(null, '', url)
+      void replace(url.pathname + url.search + url.hash, undefined, {
+        shallow: true
+      }).catch(() => window.history.replaceState(null, '', url))
     }
     setId(canvasId)
     let local = emptyDrawing()
@@ -224,7 +231,7 @@ export default function NotionPencil() {
         setStatus('雲端同步已啟用')
       })
       .catch(() => setStatus('雲端載入失敗；目前使用本機資料'))
-  }, [updateDrawing])
+  }, [isReady, replace, updateDrawing])
 
   useEffect(() => () => clearTimeout(saveTimerRef.current), [])
 
