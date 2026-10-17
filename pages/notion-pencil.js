@@ -205,9 +205,8 @@ export default function NotionPencil() {
         if (!response.ok) throw new Error('load failed')
         return response.json()
       })
-      .then(result => {
+      .then(async result => {
         if (!result) return
-        setCloud(true)
         versionRef.current = result.version
         if (result.drawing && validDrawing(result.drawing)) {
           updateDrawing(result.drawing)
@@ -216,21 +215,22 @@ export default function NotionPencil() {
             JSON.stringify(result.drawing)
           )
         } else if (local.strokes.length) {
-          fetch(`/api/notion-pencil?id=${encodeURIComponent(canvasId)}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ drawing: local, version: result.version })
-          })
-            .then(response => response.json())
-            .then(saved => {
-              if (Number.isInteger(saved.version))
-                versionRef.current = saved.version
-            })
-            .catch(() => setStatus('本機資料尚未同步；請下載 JSON 備份'))
+          const response = await fetch(
+            `/api/notion-pencil?id=${encodeURIComponent(canvasId)}`,
+            {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ drawing: local, version: result.version })
+            }
+          )
+          if (!response.ok) throw new Error('initial save failed')
+          const saved = await response.json()
+          versionRef.current = saved.version
         }
-        setStatus('雲端同步已啟用')
+        setCloud(true)
+        setStatus('已同步')
       })
-      .catch(() => setStatus('雲端載入失敗；目前使用本機資料'))
+      .catch(() => setStatus('雲端同步失敗；請下載 JSON 備份'))
   }, [isReady, replace, updateDrawing])
 
   useEffect(() => () => clearTimeout(saveTimerRef.current), [])
