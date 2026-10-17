@@ -6,7 +6,7 @@ Without a database, strokes autosave in the current browser only. PNG and JSON e
 
 ## Enable cloud sync
 
-1. Create a Supabase project and run [notion-pencil-supabase.sql](notion-pencil-supabase.sql) in its SQL editor.
+1. Create a Supabase project and run [notion-pencil-supabase.sql](https://github.com/benjamin-shih-tw/NotionNext/blob/main/docs/notion-pencil-supabase.sql) in its SQL editor.
 2. Add `NOTION_PENCIL_SUPABASE_URL` and `NOTION_PENCIL_SUPABASE_SERVICE_ROLE_KEY` to the Vercel project environment. The service role key must remain server-side and must never use a `NEXT_PUBLIC_` prefix.
 3. Redeploy. UUID canvas URLs then load from Supabase and save automatically. Only UUID IDs sync; arbitrary `?id=...` names remain local.
 
