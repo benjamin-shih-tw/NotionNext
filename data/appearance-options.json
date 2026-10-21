@@ -1,0 +1,522 @@
+{
+  "fonts": [
+    {
+      "id": "default",
+      "label": "網站預設"
+    },
+    {
+      "id": "noto-sans-tc",
+      "label": "思源黑體"
+    },
+    {
+      "id": "genseki",
+      "label": "源石黑體"
+    },
+    {
+      "id": "noto-serif-tc",
+      "label": "思源宋體"
+    },
+    {
+      "id": "huninn",
+      "label": "jf open 粉圓"
+    },
+    {
+      "id": "gensen",
+      "label": "源泉圓體"
+    },
+    {
+      "id": "chenyu",
+      "label": "辰宇落雁體"
+    }
+  ],
+  "palettes": {
+    "github-light": {
+      "bg": "#ffffff",
+      "fg": "#24292f",
+      "comment": "#6e7781",
+      "keyword": "#cf222e",
+      "string": "#0a3069",
+      "number": "#0550ae",
+      "function": "#8250df",
+      "type": "#8250df",
+      "variable": "#953800",
+      "border": "#d8dee4"
+    },
+    "github-light-default": {
+      "bg": "#ffffff",
+      "fg": "#1f2328",
+      "comment": "#59636e",
+      "keyword": "#cf222e",
+      "string": "#0a3069",
+      "number": "#0550ae",
+      "function": "#8250df",
+      "type": "#8250df",
+      "variable": "#953800",
+      "border": "#d1d9e0"
+    },
+    "github-light-colorblind": {
+      "bg": "#ffffff",
+      "fg": "#24292f",
+      "comment": "#6e7781",
+      "keyword": "#b35900",
+      "string": "#0a3069",
+      "number": "#0969da",
+      "function": "#6639ba",
+      "type": "#6639ba",
+      "variable": "#953800",
+      "border": "#d8dee4"
+    },
+    "vs-light": {
+      "bg": "#ffffff",
+      "fg": "#000000",
+      "comment": "#008000",
+      "keyword": "#0000ff",
+      "string": "#a31515",
+      "number": "#098658",
+      "function": "#795e26",
+      "type": "#267f99",
+      "variable": "#001080",
+      "border": "#dedede"
+    },
+    "quiet-light": {
+      "bg": "#f5f5f5",
+      "fg": "#333333",
+      "comment": "#aaaaaa",
+      "keyword": "#4b69c6",
+      "string": "#448c27",
+      "number": "#aa5d1f",
+      "function": "#aa3731",
+      "type": "#7a3e9d",
+      "variable": "#333333",
+      "border": "#e2e2e2"
+    },
+    "solarized-light": {
+      "bg": "#fdf6e3",
+      "fg": "#657b83",
+      "comment": "#93a1a1",
+      "keyword": "#859900",
+      "string": "#2aa198",
+      "number": "#d33682",
+      "function": "#268bd2",
+      "type": "#b58900",
+      "variable": "#cb4b16",
+      "border": "#eee8d5"
+    },
+    "light-modern": {
+      "bg": "#ffffff",
+      "fg": "#3b3b3b",
+      "comment": "#008000",
+      "keyword": "#0000ff",
+      "string": "#a31515",
+      "number": "#098658",
+      "function": "#795e26",
+      "type": "#267f99",
+      "variable": "#001080",
+      "border": "#e5e5e5"
+    },
+    "github-dark": {
+      "bg": "#0d1117",
+      "fg": "#c9d1d9",
+      "comment": "#8b949e",
+      "keyword": "#ff7b72",
+      "string": "#a5d6ff",
+      "number": "#79c0ff",
+      "function": "#d2a8ff",
+      "type": "#d2a8ff",
+      "variable": "#ffa657",
+      "border": "#30363d"
+    },
+    "github-dark-default": {
+      "bg": "#0d1117",
+      "fg": "#e6edf3",
+      "comment": "#8b949e",
+      "keyword": "#ff7b72",
+      "string": "#a5d6ff",
+      "number": "#79c0ff",
+      "function": "#d2a8ff",
+      "type": "#d2a8ff",
+      "variable": "#ffa657",
+      "border": "#30363d"
+    },
+    "github-dark-colorblind": {
+      "bg": "#0d1117",
+      "fg": "#c9d1d9",
+      "comment": "#8b949e",
+      "keyword": "#ffa657",
+      "string": "#a5d6ff",
+      "number": "#79c0ff",
+      "function": "#d2a8ff",
+      "type": "#d2a8ff",
+      "variable": "#ffa657",
+      "border": "#30363d"
+    },
+    "github-dimmed": {
+      "bg": "#22272e",
+      "fg": "#adbac7",
+      "comment": "#768390",
+      "keyword": "#f47067",
+      "string": "#96d0ff",
+      "number": "#6cb6ff",
+      "function": "#dcbdfb",
+      "type": "#dcbdfb",
+      "variable": "#f69d50",
+      "border": "#444c56"
+    },
+    "vs-dark": {
+      "bg": "#1e1e1e",
+      "fg": "#d4d4d4",
+      "comment": "#6a9955",
+      "keyword": "#569cd6",
+      "string": "#ce9178",
+      "number": "#b5cea8",
+      "function": "#dcdcaa",
+      "type": "#4ec9b0",
+      "variable": "#9cdcfe",
+      "border": "#3c3c3c"
+    },
+    "dark-modern": {
+      "bg": "#1f1f1f",
+      "fg": "#cccccc",
+      "comment": "#6a9955",
+      "keyword": "#569cd6",
+      "string": "#ce9178",
+      "number": "#b5cea8",
+      "function": "#dcdcaa",
+      "type": "#4ec9b0",
+      "variable": "#9cdcfe",
+      "border": "#424242"
+    },
+    "abyss": {
+      "bg": "#000c18",
+      "fg": "#d4d4d4",
+      "comment": "#2d95aa",
+      "keyword": "#c594c5",
+      "string": "#ecc48d",
+      "number": "#f99157",
+      "function": "#6699cc",
+      "type": "#5fb3b3",
+      "variable": "#d4d4d4",
+      "border": "#102a43"
+    },
+    "amoled": {
+      "bg": "#000000",
+      "fg": "#e6edf3",
+      "comment": "#8b949e",
+      "keyword": "#ff7b72",
+      "string": "#a5d6ff",
+      "number": "#79c0ff",
+      "function": "#d2a8ff",
+      "type": "#d2a8ff",
+      "variable": "#ffa657",
+      "border": "#30363d"
+    },
+    "kimbie": {
+      "bg": "#221a0f",
+      "fg": "#d3af86",
+      "comment": "#5e452b",
+      "keyword": "#dc3958",
+      "string": "#889b4a",
+      "number": "#f79a32",
+      "function": "#f06431",
+      "type": "#98676a",
+      "variable": "#d3af86",
+      "border": "#433321"
+    },
+    "monokai": {
+      "bg": "#272822",
+      "fg": "#f8f8f2",
+      "comment": "#75715e",
+      "keyword": "#f92672",
+      "string": "#e6db74",
+      "number": "#ae81ff",
+      "function": "#a6e22e",
+      "type": "#66d9ef",
+      "variable": "#fd971f",
+      "border": "#49483e"
+    },
+    "monokai-dimmed": {
+      "bg": "#1e1e1e",
+      "fg": "#c5c8c6",
+      "comment": "#676b70",
+      "keyword": "#bc6283",
+      "string": "#b3a06d",
+      "number": "#9f8bb7",
+      "function": "#8fae70",
+      "type": "#6fadc2",
+      "variable": "#cc8b69",
+      "border": "#363636"
+    },
+    "solarized-dark": {
+      "bg": "#002b36",
+      "fg": "#839496",
+      "comment": "#586e75",
+      "keyword": "#859900",
+      "string": "#2aa198",
+      "number": "#d33682",
+      "function": "#268bd2",
+      "type": "#b58900",
+      "variable": "#cb4b16",
+      "border": "#073642"
+    },
+    "tomorrow-blue": {
+      "bg": "#002451",
+      "fg": "#ffffff",
+      "comment": "#7285b7",
+      "keyword": "#ebbbff",
+      "string": "#d1f1a9",
+      "number": "#ff9da4",
+      "function": "#bbdaff",
+      "type": "#ffc58f",
+      "variable": "#ffffff",
+      "border": "#163b72"
+    },
+    "red": {
+      "bg": "#390000",
+      "fg": "#f8d7da",
+      "comment": "#b87d7d",
+      "keyword": "#ff8b94",
+      "string": "#ffb3b8",
+      "number": "#ffc09f",
+      "function": "#ff6b75",
+      "type": "#ffd0d3",
+      "variable": "#f8d7da",
+      "border": "#641d24"
+    },
+    "hc-dark": {
+      "bg": "#000000",
+      "fg": "#ffffff",
+      "comment": "#b4b4b4",
+      "keyword": "#ffbdad",
+      "string": "#b4f8c8",
+      "number": "#a8d8ff",
+      "function": "#e5c5ff",
+      "type": "#ffeaaa",
+      "variable": "#ffffff",
+      "border": "#ffffff"
+    },
+    "hc-light": {
+      "bg": "#ffffff",
+      "fg": "#000000",
+      "comment": "#555555",
+      "keyword": "#9c0000",
+      "string": "#005a16",
+      "number": "#003f9e",
+      "function": "#5a008b",
+      "type": "#7a3f00",
+      "variable": "#000000",
+      "border": "#000000"
+    }
+  },
+  "codeThemes": [
+    {
+      "id": "light-2026",
+      "label": "淺色 2026",
+      "group": "淺色",
+      "palette": "github-light-default"
+    },
+    {
+      "id": "vs-2017-light",
+      "label": "2017 Light (Visual Studio - C/C++)",
+      "group": "淺色",
+      "palette": "vs-light"
+    },
+    {
+      "id": "github-light",
+      "label": "GitHub Light",
+      "group": "淺色",
+      "palette": "github-light"
+    },
+    {
+      "id": "github-light-colorblind",
+      "label": "GitHub Light Colorblind (Beta)",
+      "group": "淺色",
+      "palette": "github-light-colorblind"
+    },
+    {
+      "id": "github-light-default",
+      "label": "GitHub Light Default",
+      "group": "淺色",
+      "palette": "github-light-default"
+    },
+    {
+      "id": "vs-cpp-light",
+      "label": "Light (Visual Studio - C/C++)",
+      "group": "淺色",
+      "palette": "vs-light"
+    },
+    {
+      "id": "quiet-light",
+      "label": "Quiet 淺色",
+      "group": "淺色",
+      "palette": "quiet-light"
+    },
+    {
+      "id": "solarized-light",
+      "label": "Solarized 淺色",
+      "group": "淺色",
+      "palette": "solarized-light"
+    },
+    {
+      "id": "vs-2019-light",
+      "label": "Visual Studio 2019 Light",
+      "group": "淺色",
+      "palette": "vs-light"
+    },
+    {
+      "id": "vs-light",
+      "label": "淺色 (Visual Studio)",
+      "group": "淺色",
+      "palette": "vs-light"
+    },
+    {
+      "id": "light-plus",
+      "label": "淺色+",
+      "group": "淺色",
+      "palette": "vs-light"
+    },
+    {
+      "id": "light-modern",
+      "label": "現代淺色",
+      "group": "淺色",
+      "palette": "light-modern"
+    },
+    {
+      "id": "dark-2026",
+      "label": "深色 2026",
+      "group": "深色",
+      "palette": "github-dark-default"
+    },
+    {
+      "id": "vs-2017-dark",
+      "label": "2017 Dark (Visual Studio - C/C++)",
+      "group": "深色",
+      "palette": "vs-dark"
+    },
+    {
+      "id": "abyss",
+      "label": "Abyss",
+      "group": "深色",
+      "palette": "abyss"
+    },
+    {
+      "id": "amoled",
+      "label": "AMOLED Github Theme",
+      "group": "深色",
+      "palette": "amoled"
+    },
+    {
+      "id": "vs-cpp-dark",
+      "label": "Dark (Visual Studio - C/C++)",
+      "group": "深色",
+      "palette": "vs-dark"
+    },
+    {
+      "id": "github-dark",
+      "label": "GitHub Dark",
+      "group": "深色",
+      "palette": "github-dark"
+    },
+    {
+      "id": "github-dark-colorblind",
+      "label": "GitHub Dark Colorblind (Beta)",
+      "group": "深色",
+      "palette": "github-dark-colorblind"
+    },
+    {
+      "id": "github-dark-default",
+      "label": "GitHub Dark Default",
+      "group": "深色",
+      "palette": "github-dark-default"
+    },
+    {
+      "id": "github-dark-dimmed",
+      "label": "GitHub Dark Dimmed",
+      "group": "深色",
+      "palette": "github-dimmed"
+    },
+    {
+      "id": "kimbie-dark",
+      "label": "Kimbie 深色",
+      "group": "深色",
+      "palette": "kimbie"
+    },
+    {
+      "id": "monokai",
+      "label": "Monokai",
+      "group": "深色",
+      "palette": "monokai"
+    },
+    {
+      "id": "monokai-dimmed",
+      "label": "Monokai 暗灰色",
+      "group": "深色",
+      "palette": "monokai-dimmed"
+    },
+    {
+      "id": "solarized-dark",
+      "label": "Solarized 深色",
+      "group": "深色",
+      "palette": "solarized-dark"
+    },
+    {
+      "id": "tomorrow-night-blue",
+      "label": "Tomorrow Night Blue",
+      "group": "深色",
+      "palette": "tomorrow-blue"
+    },
+    {
+      "id": "vs-2019-dark",
+      "label": "Visual Studio 2019 Dark",
+      "group": "深色",
+      "palette": "vs-dark"
+    },
+    {
+      "id": "vs-dark",
+      "label": "深色 (Visual Studio)",
+      "group": "深色",
+      "palette": "vs-dark"
+    },
+    {
+      "id": "dark-plus",
+      "label": "深色+",
+      "group": "深色",
+      "palette": "vs-dark"
+    },
+    {
+      "id": "dark-modern",
+      "label": "現代深色",
+      "group": "深色",
+      "palette": "dark-modern"
+    },
+    {
+      "id": "red",
+      "label": "紅色",
+      "group": "深色",
+      "palette": "red"
+    },
+    {
+      "id": "github-dark-hc",
+      "label": "GitHub Dark High Contrast",
+      "group": "高對比",
+      "palette": "hc-dark"
+    },
+    {
+      "id": "github-light-hc",
+      "label": "GitHub Light High Contrast",
+      "group": "高對比",
+      "palette": "hc-light"
+    },
+    {
+      "id": "default-hc",
+      "label": "深色高對比",
+      "group": "高對比",
+      "palette": "hc-dark"
+    },
+    {
+      "id": "default-hc-light",
+      "label": "淺色高對比",
+      "group": "高對比",
+      "palette": "hc-light"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useSimpleGlobal } from '..'
 import { MenuList } from './MenuList'
+import AppearanceSettings from './AppearanceSettings'
 
 /**
  * 菜单导航
@@ -36,7 +37,8 @@ export default function NavBar(props) {
     <nav className='w-full bg-white md:pt-0  relative z-20 shadow border-t border-gray-100 dark:border-hexo-black-gray dark:bg-black'>
       <div
         id='nav-bar-inner'
-        className='h-12 mx-auto max-w-9/10 justify-between items-center text-sm md:text-md md:justify-start'>
+        className='h-12 mx-auto max-w-9/10 justify-between items-center text-sm md:text-md md:justify-start'
+      >
         {/* 左侧菜单 */}
         <div className='h-full w-full float-left text-center md:text-left flex flex-wrap items-stretch md:justify-start md:items-start space-x-4'>
           {showSearchInput && (
@@ -63,8 +65,10 @@ export default function NavBar(props) {
                 ? 'fa-regular fa-circle-xmark'
                 : 'fa-solid fa-magnifying-glass' + ' align-middle'
             }
-            onClick={toggleShowSearchInput}></i>
+            onClick={toggleShowSearchInput}
+          ></i>
         </div>
+        <AppearanceSettings />
       </div>
     </nav>
   )
