@@ -93,15 +93,13 @@ def main():
 
     pool = {"brown": [], "green": []}
     for pid in models:
-        m = re.fullmatch(r"abc(\d{3})_([cde])", pid)
+        m = re.fullmatch(r"abc(\d{3})_([bcdefg])", pid)
         if not m or pid in excluded:
             continue
         d = difficulty(models, pid)
         if d is None:
             continue
         band = color(d)
-        if (band == "brown" and not 450 <= d <= 750) or (band == "green" and not 850 <= d <= 1150):
-            continue
         if band is None:
             continue
         p = pm.get(pid)
@@ -116,11 +114,12 @@ def main():
         if not isinstance(name, str) or not name:
             continue
         pool[band].append({
-            "id": pid, "title": name, "difficulty": round(d),
+            "id": pid, "title": name, "difficulty": int(d),
             "rawDifficulty": d, "band": band, "topic": "賽後填寫觀察",
             "url": f"https://atcoder.jp/contests/{c['id']}/tasks/{pid}"
         })
     print("Eligible candidates:", {k: len(v) for k, v in pool.items()})
+    print("Difficulty bands: strict 400 <= brown < 800 and 800 <= green < 1200; ABC B–G allowed.")
     if len(pool["brown"]) < 56 or len(pool["green"]) < 108:
         raise RuntimeError("Not enough verified brown/green problems. No files modified.")
 
